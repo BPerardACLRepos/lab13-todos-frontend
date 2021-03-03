@@ -3,5 +3,28 @@
 }
 
 .finished {
-  text-decoration: line-through;
+  text-decoration: line-through red;
+}
+
+.todos-div {
+  border: 2px solid grey;
+  border-radius: 3px;
+  margin: 2px;
+  padding: 3px;
+  width: 40%;
+}
+
+.todos-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  text-align: center;
+  justify-content: space-around;
+}
+
+form {
+  text-align: center;
+}
+
+p {
+  margin: 0px;
 }
