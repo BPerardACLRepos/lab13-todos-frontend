@@ -11,39 +11,48 @@ import Home from './Home/Home.js';
 import SignUpPage from './AuthPages/SignUpPage.js';
 import LoginPage from './AuthPages/LoginPage.js';
 import TodosListPage from './TodosListPage/TodosListPage.js';
-import { getUserFromLocalStorage, putUserInLocalStorage } from './local-storage-utils';
+import { setUserStorage, getStoredUserToken } from './UTILS/local-storage-utils.js';
 
 export default class App extends React.Component {
+
   state = {
-    user: getUserFromLocalStorage()
+    token: getStoredUserToken(),
   }
 
   handleUserChange = (user) => {
-    this.setState({ user })
+    setUserStorage(user);
 
-    putUserInLocalStorage(user);
+    this.setState({
+      token: user.token,
+    })
   }
 
   handleLogout = () => {
-    this.handleUserChange();
+    const user = {
+      id: '',
+      email: '',
+      token: '',
+    }
+
+    this.handleUserChange(user);
   }
 
   render() {
-    const { user } = this.state;
+
     return (
       <div>
         <Router>
           <Header
-            user={this.state.user}
+            token={this.state.token}
             handleLogout={this.handleLogout} />
-          <Switch>
+          {/* <Switch>
             <PrivateRoute
               path="/todos"
               exact
               token={user && user.token}
               render={(routerProps) =>
                 <TodosListPage
-                  user={this.state.user}
+                  token={this.state.token}
                   {...routerProps}
                 />}
             />
@@ -60,13 +69,13 @@ export default class App extends React.Component {
               path="/"
               exact
               render={(routerProps) =>
-                <LoginPage
+                <SignInPage
                   handleUserChange={this.handleUserChange}
                   {...routerProps}
                 />}
             />
 
-          </Switch>
+          </Switch> */}
         </Router>
       </div>
     )

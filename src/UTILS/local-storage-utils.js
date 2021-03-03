@@ -5,17 +5,15 @@ export function setUserStorage(user) {
     localStorage.setItem(USER, stringyUser);
 }
 
-export function getUserStorage() {
+export function getStoredUserToken() {
     user = localStorage.getItem(USER);
     parsedUser = JSON.parse(user);
 
     if (parsedUser.token === undefined) {
         return {
-            id: '',
-            email: '',
             token: '',
         }
     }
 
-    return parsedUser;
+    return parsedUser.token;
 }
