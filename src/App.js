@@ -5,13 +5,16 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import Header from './components/Header.js';
-import PrivateRoute from './components/PrivateRoute.js';
-import Home from './Home/Home.js';
-import SignUpPage from './AuthPages/SignUpPage.js';
-import LoginPage from './AuthPages/LoginPage.js';
-import TodosListPage from './TodosListPage/TodosListPage.js';
+
 import { setUserStorage, getStoredUserToken } from './UTILS/local-storage-utils.js';
+
+import Header from './COMPONENTS/Header.js';
+// import PrivateRoute from './COMPONENTS/PrivateRoute.js';
+
+// import SignInPage from './.js';
+// import SignUpPage from './.js';
+// import TodosPage from './.js';
+
 
 export default class App extends React.Component {
 
@@ -49,10 +52,19 @@ export default class App extends React.Component {
             <PrivateRoute
               path="/todos"
               exact
-              token={user && user.token}
+              token={this.state.token}
               render={(routerProps) =>
                 <TodosListPage
                   token={this.state.token}
+                  {...routerProps}
+                />}
+            />
+            <Route
+              path="/"
+              exact
+              render={(routerProps) =>
+                <LoginPage
+                  handleUserChange={this.handleUserChange}
                   {...routerProps}
                 />}
             />
@@ -65,16 +77,6 @@ export default class App extends React.Component {
                   {...routerProps}
                 />}
             />
-            <Route
-              path="/"
-              exact
-              render={(routerProps) =>
-                <SignInPage
-                  handleUserChange={this.handleUserChange}
-                  {...routerProps}
-                />}
-            />
-
           </Switch> */}
         </Router>
       </div>
