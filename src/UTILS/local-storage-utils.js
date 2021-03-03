@@ -9,11 +9,11 @@ export function getStoredUserToken() {
     const user = localStorage.getItem(USER);
     const parsedUser = JSON.parse(user);
 
-    if (!parsedUser.token.length) {
+    if (parsedUser) {
+        return parsedUser.token;
+    } else {
         return {
             token: '',
         }
     }
-
-    return parsedUser.token;
 }

@@ -17,7 +17,7 @@ export default class SignInPage extends React.Component {
     }
 
     fetchTodos = async () => {
-        const response = await getAllUserTodos(this.props.toke);
+        const response = await getAllUserTodos(this.props.token);
 
         this.setState({
             todos: response,

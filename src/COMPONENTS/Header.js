@@ -1,17 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 export default class Header extends React.Component {
     render() {
         return (
             <div>
                 {!this.props.token && <>
-                    <Link to="/">
+                    <NavLink exact activeClassName="current-page" to="/">
                         Sign In
-                </Link>
-                    <Link to="/signup">
+                </NavLink>
+                    <NavLink exact activeClassName="current-page" to="/signup">
                         Sign Up
-                </Link>
+                </NavLink>
                 </>}
                 {this.props.token && <>
                     <Link to="/todos">

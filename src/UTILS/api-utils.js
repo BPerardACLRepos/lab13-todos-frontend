@@ -1,6 +1,6 @@
 import request from 'superagent';
 
-const URL = `https://lab-12-auth.herokuapp.com/todos`;
+const URL = `https://lab-12-auth.herokuapp.com`;
 
 export async function userSignUp(email, password) {
     const response = await request
