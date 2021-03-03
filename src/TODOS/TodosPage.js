@@ -41,6 +41,10 @@ export default class SignInPage extends React.Component {
 
         await addUserTodo(this.state.todoInput, this.props.token);
 
+        this.setState({
+            todoInput: '',
+        })
+
         await this.fetchTodos();
     }
 

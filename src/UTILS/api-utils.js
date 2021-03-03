@@ -13,7 +13,7 @@ export async function userSignUp(email, password) {
 export async function userSignIn(email, password) {
     const response = await request
         .post(`${URL}/auth/signin`)
-        .send(email, password)
+        .send({ email, password })
 
     return response.body;
 }
