@@ -1,4 +1,5 @@
 import React from 'react';
+import userSignIn from '../UTILS/api-utils.js';
 
 export default class SignInPage extends React.Component {
     state = {
@@ -13,6 +14,16 @@ export default class SignInPage extends React.Component {
     handlePasswordChange = (e) => this.setState({
         password: e.target.value,
     })
+
+    handleSignIn = async (e) => {
+        e.preventDefault();
+
+        const user = await userSignIn(this.state.email, this.state.password);
+
+        this.props.handleUserChange(user);
+
+        this.props.history.push('/todos');
+    }
 
     render() {
         return (
@@ -29,6 +40,9 @@ export default class SignInPage extends React.Component {
                     </p>
                     <input value={this.state.password} onChange={this.handlePasswordChange} required />
                 </label>
+                <button onClick={this.handleSignIn}>
+                    Sign In
+                </button>
             </div>
         );
     }
