@@ -63,7 +63,7 @@ export default class App extends React.Component {
               path="/"
               exact
               render={(routerProps) =>
-                <LoginPage
+                <SignInPage
                   handleUserChange={this.handleUserChange}
                   {...routerProps}
                 />}
