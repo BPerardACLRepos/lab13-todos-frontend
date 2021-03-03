@@ -1,7 +1,7 @@
 import React from 'react';
-import userSignIn from '../UTILS/api-utils.js';
+import userSignUp from '../UTILS/api-utils.js';
 
-export default class SignInPage extends React.Component {
+export default class SignUpPage extends React.Component {
     state = {
         email: '',
         password: '',
@@ -15,10 +15,10 @@ export default class SignInPage extends React.Component {
         password: e.target.value,
     })
 
-    handleSignIn = async (e) => {
+    handleSignUp = async (e) => {
         e.preventDefault();
 
-        const user = await userSignIn(this.state.email, this.state.password);
+        const user = await userSignUp(this.state.email, this.state.password);
 
         this.props.handleUserChange(user);
 
@@ -28,7 +28,7 @@ export default class SignInPage extends React.Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSignIn}>
+                <form onSubmit={this.handleSignUp}>
                     <label>
                         <p>
                             Email
@@ -42,7 +42,7 @@ export default class SignInPage extends React.Component {
                         <input value={this.state.password} onChange={this.handlePasswordChange} required />
                     </label>
                     <button>
-                        Sign In
+                        Sign Up
                     </button>
                 </form>
             </div>
