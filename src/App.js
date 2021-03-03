@@ -9,11 +9,11 @@ import {
 import { setUserStorage, getStoredUserToken } from './UTILS/local-storage-utils.js';
 
 import Header from './COMPONENTS/Header.js';
-// import PrivateRoute from './COMPONENTS/PrivateRoute.js';
+import PrivateRoute from './COMPONENTS/PrivateRoute.js';
 
-// import SignInPage from './.js';
-// import SignUpPage from './.js';
-// import TodosPage from './.js';
+import SignInPage from './AUTH/SignIn.js';
+import SignUpPage from './AUTH/SignUpPage.js';
+import TodosPage from './TODOS/TodosPage.js';
 
 
 export default class App extends React.Component {
@@ -48,13 +48,13 @@ export default class App extends React.Component {
           <Header
             token={this.state.token}
             handleLogout={this.handleLogout} />
-          {/* <Switch>
+          <Switch>
             <PrivateRoute
               path="/todos"
               exact
               token={this.state.token}
               render={(routerProps) =>
-                <TodosListPage
+                <TodosPage
                   token={this.state.token}
                   {...routerProps}
                 />}
@@ -77,7 +77,7 @@ export default class App extends React.Component {
                   {...routerProps}
                 />}
             />
-          </Switch> */}
+          </Switch>
         </Router>
       </div>
     )

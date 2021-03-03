@@ -6,10 +6,10 @@ export function setUserStorage(user) {
 }
 
 export function getStoredUserToken() {
-    user = localStorage.getItem(USER);
-    parsedUser = JSON.parse(user);
+    const user = localStorage.getItem(USER);
+    const parsedUser = JSON.parse(user);
 
-    if (parsedUser.token === undefined) {
+    if (!parsedUser.token.length) {
         return {
             token: '',
         }
