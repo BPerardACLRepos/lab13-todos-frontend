@@ -52,16 +52,17 @@ export default class SignInPage extends React.Component {
         return (
             <div>
                 {this.state.todos.map(todo =>
-                    <div key={todo.todo} onClick={() =>
-                        this.handleComplete(todo.id)
-                    }>
+                    <div key={todo.todo} className={todo.completed && 'finished'}
+                        onClick={() =>
+                            this.handleComplete(todo.id)
+                        }>
                         <p>{todo.todo}</p>
                     </div>
                 )}
                 <form onSubmit={this.handleAddTodo}>
                     <label>
                         Add Todo
-                        <input value={this.state.todoInput} onChange={this.handleTodoInputChange} />
+                        <input value={this.state.todoInput} onChange={this.handleTodoInputChange} required />
                     </label>
                     <button>Add Todo</button>
                 </form>

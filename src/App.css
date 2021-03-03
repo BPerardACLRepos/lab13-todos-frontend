@@ -1,3 +1,7 @@
 .current-page {
   display: none;
 }
+
+.finished {
+  text-decoration: line-through;
+}
